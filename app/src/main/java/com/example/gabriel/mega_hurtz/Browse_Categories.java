@@ -1,19 +1,33 @@
 package com.example.gabriel.mega_hurtz;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 
-public class Browse_Categories extends Activity {
+public class Browse_Categories extends Activity implements OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.categories_prompt);
-    }
 
+        Button search = (Button)findViewById(R.id.search);
+        search.setOnClickListener(this);
+    }
+    @Override
+    public void onClick(View v){
+        if (v.getId() == R.id.sign_in){
+            Intent intent = new Intent (this,results_screen.class);
+            startActivity(intent);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
