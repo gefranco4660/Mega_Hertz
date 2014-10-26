@@ -22,6 +22,11 @@
     <string name="premium">Premium</string>
     <string name="luxury">Luxury</string>
     <string name="convertible">Convertible</string>
-    <string name="title_activity_results_screen">results_screen</string>
+
+    <string name="changeDate">Change Date</string>
+    <string name="chooseType">Pick a Vehicle Type</string>
+
+
+
 
 </resources>
