@@ -23,5 +23,10 @@
     <string name="luxury">Luxury</string>
     <string name="convertible">Convertible</string>
 
+    <string name="changeDate">Change Date</string>
+    <string name="chooseType">Pick a Vehicle Type</string>
+
+
+
 
 </resources>

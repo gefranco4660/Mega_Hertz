@@ -2,176 +2,191 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.gabriel.mega_hurtz.Browse_Categories">
 
-    <Button
+    // makes it scrollable with scrollview
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/search_categories"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <DatePicker
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dateFrom"
-        android:calendarViewShown="false"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tableLayout"
-        android:layout_above="@+id/button"
         android:layout_centerHorizontal="true">
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center_horizontal">
+        //ScrollView can only have one child element unless under a layout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <RadioButton
+            <DatePicker
+                android:id="@+id/dateFrom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/minivan"
-                android:id="@+id/minivan"
-                android:layout_above="@+id/convertible"
-                android:layout_toRightOf="@+id/dateFrom"
-                android:layout_toEndOf="@+id/dateFrom" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/premium"
-                android:id="@+id/premium"
-                android:layout_alignBaseline="@+id/luxury"
-                android:layout_alignBottom="@+id/luxury"
-                android:layout_toRightOf="@+id/dateFrom"
-                android:layout_toEndOf="@+id/dateFrom"
-                android:layout_column="1" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sports"
-                android:id="@+id/sports"
-                android:layout_below="@+id/luxury"
-                android:layout_alignRight="@+id/convertible"
-                android:layout_alignEnd="@+id/convertible"
-                android:layout_column="0" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/convertible"
-                android:id="@+id/convertible"
-                android:clickable="false"
-                android:layout_alignBaseline="@+id/sportsUtility"
-                android:layout_alignBottom="@+id/sportsUtility"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_column="1" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/luxury"
-                android:id="@+id/luxury"
-                android:layout_below="@+id/fullSized"
-                android:layout_alignLeft="@+id/sports"
-                android:layout_alignStart="@+id/sports"
-                android:layout_column="0" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sportsUtility"
-                android:id="@+id/sportsUtility"
-                android:layout_toStartOf="@+id/button"
-                android:layout_below="@+id/economy"
-                android:layout_alignLeft="@+id/economy"
-                android:layout_alignStart="@+id/economy"
-                android:layout_column="1"
-                android:checked="false" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/fullSized"
-                android:id="@+id/fullSized"
-                android:layout_alignBaseline="@+id/convertible"
-                android:layout_alignBottom="@+id/convertible"
-                android:layout_alignRight="@+id/compact"
-                android:layout_alignEnd="@+id/compact" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/economy"
-                android:id="@+id/economy"
                 android:layout_alignParentTop="true"
-                android:layout_alignLeft="@+id/sports"
-                android:layout_alignStart="@+id/sports"
-                android:layout_column="1" />
-        </TableRow>
+                android:layout_centerHorizontal="true"
+                android:calendarViewShown="false" />
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <RadioButton
+            <DatePicker
+                android:id="@+id/datePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/midsized"
-                android:id="@+id/midsized"
-                android:layout_alignTop="@+id/sports"
-                android:layout_toRightOf="@+id/dateFrom"
-                android:layout_toEndOf="@+id/dateFrom"
-                android:layout_column="0" />
+                android:layout_alignLeft="@+id/dateFrom"
+                android:layout_alignStart="@+id/dateFrom"
+                android:layout_below="@+id/dateFrom"
+                android:calendarViewShown="false"
+                android:foregroundGravity="center_horizontal" />
 
-            <RadioButton
+            <TableLayout
+                android:id="@+id/tableLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/compact"
-                android:id="@+id/compact"
-                android:layout_below="@+id/minivan"
-                android:layout_alignRight="@+id/minivan"
-                android:layout_alignEnd="@+id/minivan"
-                android:layout_column="1" />
-        </TableRow>
+                android:layout_above="@+id/button"
+                android:layout_centerHorizontal="true">
 
-    </TableLayout>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal">
 
-    <DatePicker
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/datePicker"
-        android:calendarViewShown="false"
-        android:foregroundGravity="center_horizontal"
-        android:layout_below="@+id/dateFrom"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+                    <RadioButton
+                        android:id="@+id/minivan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/convertible"
+                        android:layout_toEndOf="@+id/dateFrom"
+                        android:layout_toRightOf="@+id/dateFrom"
+                        android:text="@string/minivan" />
+
+                    <RadioButton
+                        android:id="@+id/premium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/luxury"
+                        android:layout_alignBottom="@+id/luxury"
+                        android:layout_column="1"
+                        android:layout_toEndOf="@+id/dateFrom"
+                        android:layout_toRightOf="@+id/dateFrom"
+                        android:text="@string/premium" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <RadioButton
+                        android:id="@+id/sports"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/convertible"
+                        android:layout_alignRight="@+id/convertible"
+                        android:layout_below="@+id/luxury"
+                        android:layout_column="0"
+                        android:text="@string/sports" />
+
+                    <RadioButton
+                        android:id="@+id/convertible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/sportsUtility"
+                        android:layout_alignBottom="@+id/sportsUtility"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_column="1"
+                        android:clickable="false"
+                        android:text="@string/convertible" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <RadioButton
+                        android:id="@+id/luxury"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/sports"
+                        android:layout_alignStart="@+id/sports"
+                        android:layout_below="@+id/fullSized"
+                        android:layout_column="0"
+                        android:text="@string/luxury" />
+
+                    <RadioButton
+                        android:id="@+id/sportsUtility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/economy"
+                        android:layout_alignStart="@+id/economy"
+                        android:layout_below="@+id/economy"
+                        android:layout_column="1"
+                        android:layout_toStartOf="@+id/button"
+                        android:checked="false"
+                        android:text="@string/sportsUtility" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <RadioButton
+                        android:id="@+id/fullSized"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/convertible"
+                        android:layout_alignBottom="@+id/convertible"
+                        android:layout_alignEnd="@+id/compact"
+                        android:layout_alignRight="@+id/compact"
+                        android:text="@string/fullSized" />
+
+                    <RadioButton
+                        android:id="@+id/economy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/sports"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignStart="@+id/sports"
+                        android:layout_column="1"
+                        android:text="@string/economy" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <RadioButton
+                        android:id="@+id/midsized"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/sports"
+                        android:layout_column="0"
+                        android:layout_toEndOf="@+id/dateFrom"
+                        android:layout_toRightOf="@+id/dateFrom"
+                        android:text="@string/midsized" />
+
+                    <RadioButton
+                        android:id="@+id/compact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/minivan"
+                        android:layout_alignRight="@+id/minivan"
+                        android:layout_below="@+id/minivan"
+                        android:layout_column="1"
+                        android:text="@string/compact" />
+                </TableRow>
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/search_categories" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </RelativeLayout>
