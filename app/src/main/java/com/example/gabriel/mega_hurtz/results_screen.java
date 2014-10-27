@@ -3,20 +3,16 @@ package com.example.gabriel.mega_hurtz;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
 
 
 public class results_screen extends ListActivity {
         public void onCreate(Bundle icicle) {
             super.onCreate(icicle);
             String[] values = new String[] { "Economy", "Midsized", "Full Sized",
-                    "Sports Utility", "MiniVan", "Luxury", "Sports Car", "Convertable",
+                    "Sports Utility", "MiniVan", "Luxury", "Sports Car", "Convertible",
                     "Premium", "Compact" };
             // use your custom layout
             DemoArrayAdapter adapter = new DemoArrayAdapter(this,values);
