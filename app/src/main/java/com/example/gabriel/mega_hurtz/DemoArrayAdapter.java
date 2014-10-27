@@ -32,10 +32,14 @@ public class DemoArrayAdapter extends ArrayAdapter<String> {
             textView.setText(values[position]);
             // change the icon for Windows and iPhone
             String s = values[position];
-            if (s.startsWith("iPhone")) {
+            if (s.startsWith("Convertible")) {
+                imageView.setImageResource(R.drawable.Convertible);
+            } else if (s.startsWith("Luxury")){
+                imageView.setImageResource(R.drawable.Luxury);
+            }else if (s.startsWith("Sports Car")){
+                imageView.setImageResource(R.drawable.sports_car);
+            }else{
                 imageView.setImageResource(R.drawable.no);
-            } else {
-                imageView.setImageResource(R.drawable.yes);
             }
 
             return rowView;

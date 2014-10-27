@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Mega_Hurtz</string>
+    <string name="app_name">Mega_Hertz</string>
     <string name="sign_in"> Sign-In</string>
     <string name="browse">Just Browse</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_browse__categories">Browse_Categories</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_account__information">Account_Information</string>
+    <string name="activity_browse_categories">Browse_Categories</string>
+    <string name="activity_account_information">Account_Information</string>
     <string name="search_categories">Search</string>
 
 

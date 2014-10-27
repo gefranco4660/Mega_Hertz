@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
@@ -23,8 +22,9 @@ public class Browse_Categories extends Activity implements OnClickListener {
     }
     @Override
     public void onClick(View v){
-        if (v.getId() == R.id.sign_in){
+        if (v.getId() == R.id.search){
             Intent intent = new Intent (this,results_screen.class);
+
             startActivity(intent);
         }
     }

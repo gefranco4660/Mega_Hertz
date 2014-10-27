@@ -4,7 +4,7 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="20">
+        android:targetSdkVersion="19">
     </uses-sdk>
 
 
@@ -18,21 +18,20 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".Browse_Categories"
-            android:label="@string/title_activity_browse__categories" >
+            android:label="Browse_Categories" >
         </activity>
         <activity
             android:name=".Account_Information"
-            android:label="@string/title_activity_account__information" >
+            android:label="Account_Information" >
         </activity>
         <activity
             android:name=".results_screen"
-            android:label="@string/title_activity_results_screen" >
+            android:label="results_screen" >
         </activity>
     </application>
 
