@@ -33,9 +33,9 @@ public class DemoArrayAdapter extends ArrayAdapter<String> {
             // change the icon for Windows and iPhone
             String s = values[position];
             if (s.startsWith("Convertible")) {
-                imageView.setImageResource(R.drawable.Convertible);
+                imageView.setImageResource(R.drawable.convertible);
             } else if (s.startsWith("Luxury")){
-                imageView.setImageResource(R.drawable.Luxury);
+                imageView.setImageResource(R.drawable.luxury);
             }else if (s.startsWith("Sports Car")){
                 imageView.setImageResource(R.drawable.sports_car);
             }else{
