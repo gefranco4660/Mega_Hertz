@@ -8,9 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 
 public class Browse_Categories extends Activity implements OnClickListener {
+
+    String IS_IT_CHECKED;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +23,18 @@ public class Browse_Categories extends Activity implements OnClickListener {
         Button search = (Button)findViewById(R.id.search);
         search.setOnClickListener(this);
     }
+    public void toggleButs(View v){
+
+
+
+
+    }
+
     @Override
     public void onClick(View v){
         if (v.getId() == R.id.search){
+//            creates an array to pass into the listview with values that create the cars.
             Intent intent = new Intent (this,results_screen.class);
-
             startActivity(intent);
         }
     }

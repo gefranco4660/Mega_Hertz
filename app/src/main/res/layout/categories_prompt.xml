@@ -24,154 +24,127 @@
                 android:id="@+id/dateFrom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
                 android:calendarViewShown="false" />
 
             <DatePicker
                 android:id="@+id/datePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/dateFrom"
-                android:layout_alignStart="@+id/dateFrom"
-                android:layout_below="@+id/dateFrom"
                 android:calendarViewShown="false"
                 android:foregroundGravity="center_horizontal" />
 
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/search"
-                android:layout_centerHorizontal="true">
+                android:layout_height="wrap_content">
 
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_gravity="center_horizontal">
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/minivan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_above="@+id/convertible"
-                        android:layout_toEndOf="@+id/dateFrom"
-                        android:layout_toRightOf="@+id/dateFrom"
-                        android:text="@string/minivan" />
+                        android:text="@string/minivan"
+                        android:onClick="toggleButs"
+                        android:clickable="true" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/premium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/luxury"
-                        android:layout_alignBottom="@+id/luxury"
                         android:layout_column="1"
-                        android:layout_toEndOf="@+id/dateFrom"
-                        android:layout_toRightOf="@+id/dateFrom"
-                        android:text="@string/premium" />
+                        android:text="@string/premium"
+                        android:onClick="toggleButs"
+                        android:clickable="true"
+                        android:checked="false" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/sports"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/convertible"
-                        android:layout_alignRight="@+id/convertible"
-                        android:layout_below="@+id/luxury"
                         android:layout_column="0"
-                        android:text="@string/sports" />
+                        android:text="@string/sports"
+                        android:onClick="toggleButs" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/convertible"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/sportsUtility"
-                        android:layout_alignBottom="@+id/sportsUtility"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
                         android:layout_column="1"
                         android:clickable="true"
-                        android:text="@string/convertible" />
+                        android:text="@string/convertible"
+                        android:onClick="toggleButs" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/luxury"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/sports"
-                        android:layout_alignStart="@+id/sports"
-                        android:layout_below="@+id/fullSized"
                         android:layout_column="0"
-                        android:text="@string/luxury" />
+                        android:text="@string/luxury"
+                        android:onClick="onClick" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/sportsUtility"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/economy"
-                        android:layout_alignStart="@+id/economy"
-                        android:layout_below="@+id/economy"
                         android:layout_column="1"
                         android:checked="false"
-                        android:text="@string/sportsUtility" />
+                        android:text="@string/sportsUtility"
+                        android:onClick="toggleButs" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/fullSized"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/convertible"
-                        android:layout_alignBottom="@+id/convertible"
-                        android:layout_alignEnd="@+id/compact"
-                        android:layout_alignRight="@+id/compact"
-                        android:text="@string/fullSized" />
+                        android:text="@string/fullSized"
+                        android:onClick="toggleButs"/>
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/economy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/sports"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignStart="@+id/sports"
                         android:layout_column="1"
-                        android:text="@string/economy" />
+                        android:text="@string/economy"
+                        android:onClick="toggleButs"/>
                 </TableRow>
 
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/midsized"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/sports"
                         android:layout_column="0"
-                        android:layout_toEndOf="@+id/dateFrom"
-                        android:layout_toRightOf="@+id/dateFrom"
-                        android:text="@string/midsized" />
+                        android:text="@string/midsized"
+                        android:onClick="toggleButs"/>
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/compact"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/minivan"
-                        android:layout_alignRight="@+id/minivan"
-                        android:layout_below="@+id/minivan"
                         android:layout_column="1"
-                        android:text="@string/compact" />
+                        android:text="@string/compact"
+                        android:onClick="toggleButs"/>
                 </TableRow>
 
             </TableLayout>
@@ -180,8 +153,6 @@
                 android:id="@+id/search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/search_categories"
                 android:onClick="onClick"

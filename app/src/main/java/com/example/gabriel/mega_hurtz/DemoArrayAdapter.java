@@ -22,6 +22,7 @@ public class DemoArrayAdapter extends ArrayAdapter<String> {
             this.values = values;
         }
 
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context
@@ -41,6 +42,7 @@ public class DemoArrayAdapter extends ArrayAdapter<String> {
             }else{
                 imageView.setImageResource(R.drawable.no);
             }
+
 
             return rowView;
         }

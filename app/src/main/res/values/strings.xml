@@ -8,8 +8,6 @@
     <string name="activity_browse_categories">Browse_Categories</string>
     <string name="activity_account_information">Account_Information</string>
     <string name="search_categories">Search</string>
-
-
     <string name="economy">Economy</string>
     <string name="midsized">Midsized</string>
     <string name="sports">Sports Car</string>
@@ -21,11 +19,8 @@
     <string name="premium">Premium</string>
     <string name="luxury">Luxury</string>
     <string name="convertible">Convertible</string>
-
     <string name="changeDate">Change Date</string>
     <string name="chooseType">Pick a Vehicle Type</string>
-
-
-
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
