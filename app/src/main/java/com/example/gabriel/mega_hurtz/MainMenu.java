@@ -18,14 +18,21 @@ public class MainMenu extends Activity implements View.OnClickListener {
 
         Button browse = (Button) findViewById(R.id.Browse);
         browse.setOnClickListener(this);
+
+        Button register = (Button) findViewById(R.id.register);
+        register.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v){
         if (v.getId() == R.id.Browse){
-            Intent intent = new Intent (this, Browse_Categories.class);
-            startActivity(intent);
+            Intent browseIntent = new Intent (this, Browse_Categories.class);
+            startActivity(browseIntent);
+        }
+        if (v.getId() == R.id.register){
+            Intent registerIntent = new Intent(this, Account_Information.class);
+            startActivity(registerIntent);
         }
     }
     @Override

@@ -14,7 +14,7 @@
         android:inputType="textPersonName"
         android:hint="Name"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/editFirstName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="39dp" />
 
@@ -24,10 +24,10 @@
         android:inputType="textPassword"
         android:hint="Password"
         android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText" />
+        android:id="@+id/editLastName"
+        android:layout_below="@+id/editFirstName"
+        android:layout_alignLeft="@+id/editFirstName"
+        android:layout_alignStart="@+id/editFirstName" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="@string/sign_in"
         android:id="@+id/sign_in"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/editLastName"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -45,6 +45,14 @@
         android:text="@string/browse"
         android:id="@+id/Browse"
         android:layout_below="@+id/sign_in"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:id="@+id/register"
+        android:layout_below="@+id/Browse"
         android:layout_centerHorizontal="true" />
 
 
