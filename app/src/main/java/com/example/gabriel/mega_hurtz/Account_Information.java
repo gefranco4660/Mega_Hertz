@@ -94,11 +94,11 @@ public class Account_Information extends Activity {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("username", username));
             params.add(new BasicNameValuePair("password", password));
-            params.add(new BasicNameValuePair("firstName", first_name));
-            params.add(new BasicNameValuePair("lastName", last_name));
+            params.add(new BasicNameValuePair("first_name", first_name));
+            params.add(new BasicNameValuePair("last_name", last_name));
             params.add(new BasicNameValuePair("email", email));
             params.add(new BasicNameValuePair("phone", phone));
-            params.add(new BasicNameValuePair("birthdate", birth_date));
+            params.add(new BasicNameValuePair("dob", birth_date));
 
             //getting JSON object
             JSONObject json = jsonParser.makeHttpRequest(urlCreateUser, "POST", params);
@@ -111,6 +111,7 @@ public class Account_Information extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
 
                 if (success == 1){
+                    progressDialog.setMessage("Successfully connected to URL");
                     //successfully created new user
                     Intent i = new Intent(getApplicationContext(), Account_Information.class);
                     startActivity(i);
@@ -119,6 +120,7 @@ public class Account_Information extends Activity {
                     finish();
                 } else {
                     //failed to create user
+                    progressDialog.setMessage("Failed creating user");
                 }
             } catch (JSONException e){
                 e.printStackTrace();
