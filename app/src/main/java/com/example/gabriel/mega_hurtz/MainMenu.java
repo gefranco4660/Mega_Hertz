@@ -1,15 +1,29 @@
 package com.example.gabriel.mega_hurtz;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainMenu extends Activity implements View.OnClickListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +35,11 @@ public class MainMenu extends Activity implements View.OnClickListener {
 
         Button register = (Button) findViewById(R.id.register);
         register.setOnClickListener(this);
-    }
 
+        Button login = (Button) findViewById(R.id.sign_in);
+        login.setOnClickListener(this);
+
+    }
 
     @Override
     public void onClick(View v){
@@ -33,6 +50,10 @@ public class MainMenu extends Activity implements View.OnClickListener {
         if (v.getId() == R.id.register){
             Intent registerIntent = new Intent(this, Account_Information.class);
             startActivity(registerIntent);
+        }
+        if (v.getId() == R.id.sign_in){
+            Intent loginIntent = new Intent(this, Login.class);
+            startActivity(loginIntent);
         }
     }
     @Override

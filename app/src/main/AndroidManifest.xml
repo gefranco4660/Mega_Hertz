@@ -33,6 +33,10 @@
             android:name=".results_screen"
             android:label="results_screen" >
         </activity>
+        <activity
+            android:name=".Login"
+            android:label="main_menu">
+         </activity>
     </application>
     <!--  Internet Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
