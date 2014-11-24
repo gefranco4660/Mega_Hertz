@@ -16,10 +16,10 @@
     <string name="search_categories">Search</string>
     <string name="economy">Economy</string>
     <string name="midsized">Midsized</string>
-    <string name="sports">Sports Car</string>
+    <string name="sports">Sports</string>
     <string name="minivan">Minivan</string>
     <string name="compact">Compact</string>
-    <string name="sportsUtility">Sports Utility Car</string>
+    <string name="sportsUtility">Sports Utility</string>
     <string name="standard">Standard</string>
     <string name="fullSized">Full Sized</string>
     <string name="premium">Premium</string>

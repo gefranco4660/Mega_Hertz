@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.gabriel.mega_hurtz.Browse_Categories">
+    tools:context="com.example.gabriel.mega_hurtz.Browse_Categories"
+    android:background="#ff035b00">
 
     // makes it scrollable with scrollview
     <ScrollView
@@ -24,19 +25,23 @@
                 android:id="@+id/dateFrom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:calendarViewShown="false" />
+                android:calendarViewShown="false"
+                android:layout_gravity="center_horizontal" />
 
             <DatePicker
                 android:id="@+id/datePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:calendarViewShown="false"
-                android:foregroundGravity="center_horizontal" />
+                android:foregroundGravity="center_horizontal"
+                android:layout_gravity="center_horizontal" />
 
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="0dp">
 
                 <TableRow
                     android:layout_width="fill_parent"
@@ -49,7 +54,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/minivan"
                         android:onClick="toggleButs"
-                        android:clickable="true" />
+                        android:clickable="true"
+                        android:button="@drawable/check_box_bg" />
 
                     <CheckBox
                         android:id="@+id/premium"
@@ -59,7 +65,8 @@
                         android:text="@string/premium"
                         android:onClick="toggleButs"
                         android:clickable="true"
-                        android:checked="false" />
+                        android:checked="false"
+                        android:button="@drawable/check_box_bg"/>
                 </TableRow>
 
                 <TableRow
@@ -72,7 +79,8 @@
                         android:layout_height="wrap_content"
                         android:layout_column="0"
                         android:text="@string/sports"
-                        android:onClick="toggleButs" />
+                        android:onClick="toggleButs"
+                        android:button="@drawable/check_box_bg" />
 
                     <CheckBox
                         android:id="@+id/convertible"
@@ -81,7 +89,8 @@
                         android:layout_column="1"
                         android:clickable="true"
                         android:text="@string/convertible"
-                        android:onClick="toggleButs" />
+                        android:onClick="toggleButs"
+                        android:button="@drawable/check_box_bg"/>
                 </TableRow>
 
                 <TableRow
@@ -94,7 +103,8 @@
                         android:layout_height="wrap_content"
                         android:layout_column="0"
                         android:text="@string/luxury"
-                        android:onClick="onClick" />
+                        android:onClick="onClick"
+                        android:button="@drawable/check_box_bg"/>
 
                     <CheckBox
                         android:id="@+id/sportsUtility"
@@ -103,7 +113,9 @@
                         android:layout_column="1"
                         android:checked="false"
                         android:text="@string/sportsUtility"
-                        android:onClick="toggleButs" />
+                        android:onClick="toggleButs"
+                        android:layout_marginRight="7sp"
+                        android:button="@drawable/check_box_bg"/>
                 </TableRow>
 
                 <TableRow
@@ -115,7 +127,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/fullSized"
-                        android:onClick="toggleButs"/>
+                        android:onClick="toggleButs"
+                        android:button="@drawable/check_box_bg"/>
 
                     <CheckBox
                         android:id="@+id/economy"
@@ -123,7 +136,9 @@
                         android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:text="@string/economy"
-                        android:onClick="toggleButs"/>
+                        android:onClick="toggleButs"
+                        android:layout_marginRight="5sp"
+                        android:button="@drawable/check_box_bg"/>
                 </TableRow>
 
                 <TableRow
@@ -136,7 +151,8 @@
                         android:layout_height="wrap_content"
                         android:layout_column="0"
                         android:text="@string/midsized"
-                        android:onClick="toggleButs"/>
+                        android:onClick="toggleButs"
+                        android:button="@drawable/check_box_bg"/>
 
                     <CheckBox
                         android:id="@+id/compact"
@@ -144,7 +160,8 @@
                         android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:text="@string/compact"
-                        android:onClick="toggleButs"/>
+                        android:onClick="toggleButs"
+                        android:button="@drawable/check_box_bg"/>
                 </TableRow>
 
             </TableLayout>
@@ -156,7 +173,8 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/search_categories"
                 android:onClick="onClick"
-                />
+                style="@style/ButtonStyle" />
+
         </LinearLayout>
     </ScrollView>
 
