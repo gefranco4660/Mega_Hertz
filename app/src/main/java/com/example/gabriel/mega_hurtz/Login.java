@@ -5,13 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,10 +21,11 @@ import java.util.List;
 /**
  * Created by Carl on 11/22/2014.
  */
-public class Login extends Activity {
+public class Login extends Activity implements View.OnClickListener {
 
     String username;
     String password;
+    EditText user, pass;
 
     //progress Dialog
     private ProgressDialog progressDialog;
@@ -42,28 +43,34 @@ public class Login extends Activity {
     private static final String TAG_USER = "user";
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_login_screen);
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        //Edit Text variables
+        user = (EditText) findViewById(R.id.loginUsername);
+        pass = (EditText) findViewById(R.id.loginPassword);
 
-        StrictMode.setThreadPolicy(policy);
+        //Button for register and intent
+        Button register = (Button) findViewById(R.id.register);
+        register.setOnClickListener(this);
 
-        //login button
-        Button login = (Button) findViewById(R.id.sign_in);
-
-        //getting login details from intent
-        Intent i = getIntent();
-
-        //getting username and password from intent
-        username = i.getStringExtra(TAG_USERNAME);
-        password = i.getStringExtra(TAG_PASSWORD);
-
-        //Getting complete user details in background thread
-        new GetUserDetails().execute();
+        //Button for login and intent
+        Button login = (Button) findViewById(R.id.login);
+        login.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.login:
+                new GetUserDetails();
+                break;
+            case R.id.register:
+                Intent registerIntent = new Intent(Login.this, Account_Information.class);
+                startActivity(registerIntent);
+        }
+    }
     /*
     Background Async Task to Get complete User Details
     */
@@ -83,17 +90,22 @@ public class Login extends Activity {
         /*
         Getting user details in background thread
          */
-        protected String doInBackground(String... params){
+        protected String doInBackground(String... args){
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     //Check for success tag
                     int success;
+                    String username = user.getText().toString();
+                    String password = pass.getText().toString();
                     try{
                         //Building Parameters
                         List<NameValuePair> params = new ArrayList<NameValuePair>();
                         params.add(new BasicNameValuePair("username", username));
                         params.add(new BasicNameValuePair("password", password));
+
+                        //Note in logcat that the request has started
+                        Log.d("Request!", "Starting...");
 
                         //getting product details by making HTTP request
                         //Note that product details url will use GET request
@@ -105,13 +117,16 @@ public class Login extends Activity {
                         //json success tag
                         success = json.getInt(TAG_SUCCESS);
                         if (success == 1){
-                            //successfully received user details
-                            JSONArray userObj = json.getJSONArray(TAG_USER);
 
-                            //get first user object from JSON array
-                            JSONObject user = userObj.getJSONObject(0);
+                            //Note in logcat login successful
+                            Log.d("Login Successful!", json.toString());
 
-                            //user details with this username found
+                            //Intent to send user to User_Details
+                            Intent ii = new Intent(Login.this, user_details.class);
+                            startActivity(ii);
+
+                            progressDialog.setMessage("Successfully Logged In!");
+
                         } else {
                             progressDialog.setMessage("Failed to find that username");
                         }
@@ -130,6 +145,5 @@ public class Login extends Activity {
             progressDialog.dismiss();
         }
     }
-
 }
 

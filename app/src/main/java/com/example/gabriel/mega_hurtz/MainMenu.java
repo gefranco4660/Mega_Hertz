@@ -36,7 +36,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
         Button register = (Button) findViewById(R.id.register);
         register.setOnClickListener(this);
 
-        Button login = (Button) findViewById(R.id.sign_in);
+        Button login = (Button) findViewById(R.id.account_login);
         login.setOnClickListener(this);
 
     }
@@ -44,15 +44,15 @@ public class MainMenu extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v){
         if (v.getId() == R.id.Browse){
-            Intent browseIntent = new Intent (this, Browse_Categories.class);
+            Intent browseIntent = new Intent (MainMenu.this, Browse_Categories.class);
             startActivity(browseIntent);
         }
         if (v.getId() == R.id.register){
-            Intent registerIntent = new Intent(this, Account_Information.class);
+            Intent registerIntent = new Intent(MainMenu.this, Account_Information.class);
             startActivity(registerIntent);
         }
-        if (v.getId() == R.id.sign_in){
-            Intent loginIntent = new Intent(this, Login.class);
+        if (v.getId() == R.id.account_login){
+            Intent loginIntent = new Intent(MainMenu.this, Login.class);
             startActivity(loginIntent);
         }
     }
