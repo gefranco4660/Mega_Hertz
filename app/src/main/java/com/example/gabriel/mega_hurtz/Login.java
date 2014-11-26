@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,9 +24,9 @@ import java.util.List;
  */
 public class Login extends Activity implements View.OnClickListener {
 
-    String username;
-    String password;
+
     EditText user, pass;
+    EditText txtfirstname, txtlastname, txtdob, txtemail, txtusername, txtphone;
 
     //progress Dialog
     private ProgressDialog progressDialog;
@@ -38,9 +39,7 @@ public class Login extends Activity implements View.OnClickListener {
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
-    private static final String TAG_USERNAME = "username";
-    private static final String TAG_PASSWORD = "password";
-    private static final String TAG_USER = "user";
+    private static final String TAG_MESSAGE = "message";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,11 +63,14 @@ public class Login extends Activity implements View.OnClickListener {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.login:
-                new GetUserDetails();
+                new GetUserDetails().execute();
                 break;
             case R.id.register:
                 Intent registerIntent = new Intent(Login.this, Account_Information.class);
                 startActivity(registerIntent);
+                break;
+            default:
+                break;
         }
     }
     /*
@@ -78,11 +80,12 @@ public class Login extends Activity implements View.OnClickListener {
         /*
         Before starting background thread show progress dialog
          */
+        boolean failure = false;
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
             progressDialog = new ProgressDialog(Login.this);
-            progressDialog.setMessage("Loading User details. Please wait...");
+            progressDialog.setMessage("Attempting Login...");
             progressDialog.setIndeterminate(false);
             progressDialog.setCancelable(true);
             progressDialog.show();
@@ -91,9 +94,7 @@ public class Login extends Activity implements View.OnClickListener {
         Getting user details in background thread
          */
         protected String doInBackground(String... args){
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
+
                     //Check for success tag
                     int success;
                     String username = user.getText().toString();
@@ -112,7 +113,7 @@ public class Login extends Activity implements View.OnClickListener {
                         JSONObject json = jsonParser.makeHttpRequest(urlLogin, "GET", params);
 
                         //check the log for json response
-                        Log.d("Login Details", json.toString());
+                        Log.d("Login Attempt", json.toString());
 
                         //json success tag
                         success = json.getInt(TAG_SUCCESS);
@@ -121,29 +122,38 @@ public class Login extends Activity implements View.OnClickListener {
                             //Note in logcat login successful
                             Log.d("Login Successful!", json.toString());
 
-                            //Intent to send user to User_Details
+                             //Intent to send user to User_Details
                             Intent ii = new Intent(Login.this, user_details.class);
+
                             startActivity(ii);
 
-                            progressDialog.setMessage("Successfully Logged In!");
+                            return json.getString(TAG_MESSAGE);
 
                         } else {
+                            Log.d("Login Failure!", json.getString(TAG_MESSAGE));
                             progressDialog.setMessage("Failed to find that username");
                         }
                     } catch(JSONException e){
                         e.printStackTrace();
                     }
-                }
-            });
 
             return null;
+            }
+
+
+
         }
         /*
         After completing background task dismiss the progress dialog
          */
+
         protected void onPostExecute(String file_url){
-            progressDialog.dismiss();
+            if (progressDialog!= null){
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
         }
+
     }
-}
+
 

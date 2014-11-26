@@ -38,7 +38,7 @@
             android:label="Login Screen">
          </activity>
         <activity android:name=".user_details"
-            android:label="user_details">
+            android:label="User Details">
         </activity>
 
     </application>
