@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:columnCount="2"
-        android:rowCount="9"
+        android:columnCount="3"
+        android:rowCount="14"
         android:id="@+id/gridLayout"
         android:layout_marginTop="35dp">
 
@@ -34,7 +34,17 @@
             android:text="@string/firstName"
             android:id="@+id/firstNameLabel"
             android:layout_row="1"
-            android:layout_column="0" />
+            android:layout_column="0"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editFirstname"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:editable="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,36 +54,17 @@
             android:id="@+id/lastNameLabel"
             android:layout_row="2"
             android:layout_column="0"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/lastName"
+            android:id="@+id/editLastname"
             android:layout_row="2"
             android:layout_column="1"
-            android:hint="Last Name Appears Here"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/firstName"
-            android:layout_row="1"
-            android:layout_column="1"
-            android:hint="First Name Appears Here" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/dateOfBirth"
-            android:layout_row="4"
-            android:layout_column="1"
-            android:hint="Date Appears Here"
-            android:layout_marginTop="10dp"/>
+            android:editable="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,7 +74,17 @@
             android:id="@+id/dateOfBirthLabel"
             android:layout_row="4"
             android:layout_column="0"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editDOB"
+            android:layout_row="4"
+            android:layout_column="1"
+            android:editable="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -93,17 +94,25 @@
             android:id="@+id/emailLabel"
             android:layout_row="5"
             android:layout_column="0"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/email"
+            android:id="@+id/editEmail"
             android:layout_row="5"
             android:layout_column="1"
-            android:hint="Email Appears Here"
-            android:layout_marginTop="10dp"/>
+            android:editable="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editUsername"
+            android:layout_row="8"
+            android:layout_column="1"
+            android:editable="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -111,20 +120,11 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/username"
             android:id="@+id/usernameLabel"
-            android:layout_row="6"
+            android:layout_row="8"
             android:layout_column="0"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/username"
-            android:layout_row="6"
-            android:layout_column="1"
-            android:hint="Username Appears Here"
-            android:layout_marginTop="10dp"/>
-
+            android:layout_marginTop="10dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp" />
 
 
         <TextView
@@ -133,20 +133,19 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/phone"
             android:id="@+id/phoneLabel"
-            android:layout_row="7"
+            android:layout_row="12"
             android:layout_column="0"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/phone"
-            android:layout_row="7"
+            android:id="@+id/editPhone"
+            android:layout_row="12"
             android:layout_column="1"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:hint="Phone Appears Here"
-            android:layout_marginTop="10dp"/>
-
+            android:editable="true" />
 
 
     </GridLayout>
@@ -155,7 +154,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Return"
-        android:id="@+id/submitAccount"
+        android:id="@+id/user_browse"
         android:layout_below="@+id/gridLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp" />

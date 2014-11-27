@@ -111,16 +111,16 @@ public class Account_Information extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
 
                 if (success == 1){
-                    progressDialog.setMessage("Successfully connected to URL");
+                    //progressDialog.setMessage("Success");
                     //successfully created new user
-                    Intent i = new Intent(getApplicationContext(), Account_Information.class);
+                    Intent i = new Intent(Account_Information.this, Login.class);
                     startActivity(i);
 
                     //closing this screen
                     finish();
                 } else {
                     //failed to create user
-                    progressDialog.setMessage("Failed creating user");
+                    //progressDialog.setMessage("Failed creating user");
                 }
             } catch (JSONException e){
                 e.printStackTrace();
@@ -132,7 +132,10 @@ public class Account_Information extends Activity {
          */
         protected void onPostExecute(String file_url){
             //dismiss the dialog once done
-            progressDialog.dismiss();
+            if (progressDialog != null) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
         }
     }
 

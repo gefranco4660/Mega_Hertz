@@ -26,7 +26,7 @@ public class Login extends Activity implements View.OnClickListener {
 
 
     EditText user, pass;
-    EditText txtfirstname, txtlastname, txtdob, txtemail, txtusername, txtphone;
+    //EditText txtfirstname, txtlastname, txtdob, txtemail, txtusername, txtphone;
 
     //progress Dialog
     private ProgressDialog progressDialog;
@@ -39,7 +39,7 @@ public class Login extends Activity implements View.OnClickListener {
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
-    private static final String TAG_MESSAGE = "message";
+    private static final String TAG_MESSAGE = "userinfo";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,8 +60,8 @@ public class Login extends Activity implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v){
-        switch (v.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.login:
                 new GetUserDetails().execute();
                 break;
@@ -73,16 +73,18 @@ public class Login extends Activity implements View.OnClickListener {
                 break;
         }
     }
+
     /*
     Background Async Task to Get complete User Details
     */
-    class GetUserDetails extends AsyncTask<String, String, String>{
+    class GetUserDetails extends AsyncTask<String, String, String> {
         /*
         Before starting background thread show progress dialog
          */
         boolean failure = false;
+
         @Override
-        protected void onPreExecute(){
+        protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = new ProgressDialog(Login.this);
             progressDialog.setMessage("Attempting Login...");
@@ -90,70 +92,90 @@ public class Login extends Activity implements View.OnClickListener {
             progressDialog.setCancelable(true);
             progressDialog.show();
         }
+
         /*
         Getting user details in background thread
          */
-        protected String doInBackground(String... args){
+        protected String doInBackground(String... args) {
 
-                    //Check for success tag
-                    int success;
-                    String username = user.getText().toString();
-                    String password = pass.getText().toString();
-                    try{
-                        //Building Parameters
-                        List<NameValuePair> params = new ArrayList<NameValuePair>();
-                        params.add(new BasicNameValuePair("username", username));
-                        params.add(new BasicNameValuePair("password", password));
+            //Check for success tag
+            int success;
+            String username = user.getText().toString();
+            String password = pass.getText().toString();
+            try {
+                //Building Parameters
+                List<NameValuePair> params = new ArrayList<NameValuePair>();
+                params.add(new BasicNameValuePair("username", username));
+                params.add(new BasicNameValuePair("password", password));
 
-                        //Note in logcat that the request has started
-                        Log.d("Request!", "Starting...");
+                //Note in logcat that the request has started
+                Log.d("Request!", "Starting...");
 
-                        //getting product details by making HTTP request
-                        //Note that product details url will use GET request
-                        JSONObject json = jsonParser.makeHttpRequest(urlLogin, "GET", params);
+                //getting product details by making HTTP request
+                //Note that product details url will use GET request
+                JSONObject json = jsonParser.makeHttpRequest(urlLogin, "GET", params);
 
-                        //check the log for json response
-                        Log.d("Login Attempt", json.toString());
+                //check the log for json response
+                Log.d("Login Attempt", json.toString());
 
-                        //json success tag
-                        success = json.getInt(TAG_SUCCESS);
-                        if (success == 1){
+                //json success tag
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
 
-                            //Note in logcat login successful
-                            Log.d("Login Successful!", json.toString());
+                    //Note in logcat login successful
+                    Log.d("Login Successful!", json.toString());
 
-                             //Intent to send user to User_Details
-                            Intent ii = new Intent(Login.this, user_details.class);
 
-                            startActivity(ii);
+                    //////return json.getString(TAG_MESSAGE);
 
-                            return json.getString(TAG_MESSAGE);
 
-                        } else {
-                            Log.d("Login Failure!", json.getString(TAG_MESSAGE));
-                            progressDialog.setMessage("Failed to find that username");
-                        }
-                    } catch(JSONException e){
-                        e.printStackTrace();
-                    }
+                    // successfully received user details
+                    JSONArray userInfoJSON = json
+                            .getJSONArray(TAG_MESSAGE); // JSON Array
 
-            return null;
+                    // get first user object from JSON Array
+                    JSONObject userInfo = userInfoJSON.getJSONObject(0);
+
+                    //Take each string out in order to pass to create userProfile
+                    String username1 = userInfo.getString("username");
+                    String firstname = userInfo.getString("firstname");
+                    String lastname = userInfo.getString("lastname");
+                    String email = userInfo.getString("email");
+                    String dob = userInfo.getString("dob");
+                    String phone = userInfo.getString("phone");
+                    String user_id = userInfo.getString("user_id");
+
+                    User_Profile userprofile = new User_Profile(username1, firstname, lastname, email, phone, dob, user_id);
+
+
+                    //Intent to send user to User_Details
+                    Intent ii = new Intent(Login.this, user_details.class);
+                    //Pass the userProfile to user_details using Parcel
+                    ii.putExtra("user", (android.os.Parcelable) userprofile);
+                    startActivity(ii);
+
+                } else {
+                    Log.d("Login Failure!", json.getString(TAG_MESSAGE));
+                    progressDialog.setMessage("Failed to find that username");
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
 
-
-
+            return null;
         }
+
+
+    }
         /*
         After completing background task dismiss the progress dialog
          */
 
-        protected void onPostExecute(String file_url){
-            if (progressDialog!= null){
-                progressDialog.dismiss();
-                progressDialog = null;
-            }
+    protected void onPostExecute(String file_url) {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
         }
-
     }
 
-
+}
