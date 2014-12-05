@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -155,8 +156,17 @@ public class Login extends Activity implements View.OnClickListener {
                     startActivity(ii);
 
                 } else {
-                    Log.d("Login Failure!", json.getString(TAG_MESSAGE));
-                    progressDialog.setMessage("Failed to find that username");
+                    //close all progressDialog is not already done so
+                    if (progressDialog != null) {
+                        progressDialog.dismiss();
+                        progressDialog = null;
+                    }
+
+                    //Re-run login activity because invalid login
+                    Intent i = new Intent(getApplicationContext(), Login.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
