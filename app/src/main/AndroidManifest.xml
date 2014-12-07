@@ -12,7 +12,10 @@
     <android:uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <android:uses-permission
+        android:name="android.permission.READ_PHONE_STATE" />
+
     <android:uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
@@ -38,10 +41,6 @@
         <activity
             android:name="com.example.gabriel.mega_hurtz.Account_Information"
             android:label="Account_Information" >
-        </activity>
-        <activity
-            android:name="com.example.gabriel.mega_hurtz.results_screen"
-            android:label="results_screen" >
         </activity>
         <activity
             android:name="com.example.gabriel.mega_hurtz.Login"
