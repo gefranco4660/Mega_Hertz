@@ -162,10 +162,10 @@ public class Login extends Activity implements View.OnClickListener {
                         progressDialog = null;
                     }
 
-                    //Re-run login activity because invalid login
-                    Intent i = new Intent(getApplicationContext(), Login.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(i);
+//                    //Re-run login activity because invalid login
+//                    Intent i = new Intent(getApplicationContext(), Login.class);
+//                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    startActivity(i);
 
                 }
             } catch (JSONException e) {

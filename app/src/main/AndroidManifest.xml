@@ -6,6 +6,16 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="19" >
     </uses-sdk>
+    <!-- Internet Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <android:uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +23,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainMenu"
+            android:name="com.example.gabriel.mega_hurtz.MainMenu"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,43 +32,45 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Browse_Categories"
+            android:name="com.example.gabriel.mega_hurtz.Browse_Categories"
             android:label="Browse_Categories" >
         </activity>
         <activity
-            android:name=".Account_Information"
+            android:name="com.example.gabriel.mega_hurtz.Account_Information"
             android:label="Account_Information" >
         </activity>
         <activity
-            android:name=".results_screen"
+            android:name="com.example.gabriel.mega_hurtz.results_screen"
             android:label="results_screen" >
         </activity>
         <activity
-            android:name=".Login"
+            android:name="com.example.gabriel.mega_hurtz.Login"
             android:label="Login Screen" >
         </activity>
         <activity
-            android:name=".user_details"
+            android:name="com.example.gabriel.mega_hurtz.user_details"
             android:label="User Details" >
         </activity>
         <activity
-            android:name=".AllProductsActivity"
+            android:name="com.example.gabriel.mega_hurtz.AllProductsActivity"
             android:label="@string/title_activity_all_products" >
         </activity>
         <activity
-            android:name=".list_item"
+            android:name="com.example.gabriel.mega_hurtz.list_item"
             android:label="@string/title_activity_list_item" >
         </activity>
         <activity
-            android:name=".view_single_car"
+            android:name="com.example.gabriel.mega_hurtz.view_single_car"
             android:label="@string/title_activity_view_single_car" >
         </activity>
         <activity
-            android:name=".some_products"
+            android:name="com.example.gabriel.mega_hurtz.some_products"
             android:label="@string/title_activity_some_products" >
         </activity>
+        <activity
+            android:name="com.example.gabriel.mega_hurtz.ConfirmReservationActivity"
+            android:label="@string/title_activity_confirm_reservation" >
+        </activity>
     </application>
-    <!-- Internet Permissions -->
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
