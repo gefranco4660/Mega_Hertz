@@ -49,38 +49,39 @@ public class MySimpleAdapter extends SimpleAdapter{
                 pid.setText(car.get(from[0]));
                 carView.setContentDescription(car.get(from[0]));
 
+                String s = car.get(from[0]);
 
-                if(car.get(from[0]).equals("1")) {
+                if(s.equals("1")) {
                     carView.setImageResource(R.drawable.id1);
-                }else if (car.get(from[0]).equals("2")) {
+                }else if (s.equals("2")) {
                     carView.setImageResource(R.drawable.id2);
-                }else if (car.get(from[0]).equals("3")) {
+                }else if (s.equals("3")) {
                     carView.setImageResource(R.drawable.id3);
-                }else if (car.get(from[0]).equals("4")) {
+                }else if (s.equals("4")) {
                     carView.setImageResource(R.drawable.id4);
-                }else if (car.get(from[0]).equals("5")) {
+                }else if (s.equals("5")) {
                     carView.setImageResource(R.drawable.id5);
-                }else if (car.get(from[0]).equals("6")) {
+                }else if (s.equals("6")) {
                     carView.setImageResource(R.drawable.id6);
-                }else if (car.get(from[0]).equals("7")) {
+                }else if (s.equals("7")) {
                     carView.setImageResource(R.drawable.id7);
-                }else if (car.get(from[0]).equals("8")) {
+                }else if (s.equals("8")) {
                     carView.setImageResource(R.drawable.id8);
-                }else if (car.get(from[0]).equals("9")) {
+                }else if (s.equals("9")) {
                     carView.setImageResource(R.drawable.id9);
-                }else if (car.get(from[0]).equals("10")) {
+                }else if (s.equals("10")) {
                     carView.setImageResource(R.drawable.id10);
-                }else if (car.get(from[0]).equals("11")) {
+                }else if (s.equals("11")) {
                     carView.setImageResource(R.drawable.id11);
-                }else if (car.get(from[0]).equals("12")) {
+                }else if (s.equals("12")) {
                     carView.setImageResource(R.drawable.id12);
-                }else if (car.get(from[0]).equals("13")) {
+                }else if (s.equals("13")) {
                     carView.setImageResource(R.drawable.id13);
-                }else if (car.get(from[0]).equals("14")) {
+                }else if (s.equals("14")) {
                     carView.setImageResource(R.drawable.id14);
-                }else if (car.get(from[0]).equals("15")) {
+                }else if (s.equals("15")) {
                     carView.setImageResource(R.drawable.id15);
-                }else if (car.get(from[0]).equals("16")) {
+                }else if (s.equals("16")) {
                     carView.setImageResource(R.drawable.id16);
                 }else{
                     carView.setImageResource(R.drawable.ic_launcher);

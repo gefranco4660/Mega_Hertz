@@ -27,6 +27,8 @@
     <string name="dropoff">Drop-off Date</string>
     <string name="totalcost">Total Cost:</string>
     <string name="confirmorder">Reserve</string>
+    <string name="insurance">Insurance Cost:</string>
+    <string name="costperday">Cost per day:</string>
 
     //reservation confirmation values
     <string name="FirstName">First Name:</string>
