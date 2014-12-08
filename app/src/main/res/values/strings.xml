@@ -34,7 +34,8 @@
     <string name="CreditNumber">Credit Card Number:</string>
     <string name="SecurityCode">Security Code:</string>
     <string name="BillingAddress">Billing Address:</string>
-    <string name="ExpDate">Exipration Date:</string>
+    <string name="ExpDate">Expiration Date:</string>
+    <string name="title_activity_confirm_reservation">ConfirmReservationActivity</string>
 
     //Categories Prompt
     <string name="action_settings">Settings</string>
@@ -75,7 +76,6 @@
     <string name="title_activity_view_single_car">view_single_car</string>
     <string name="title_activity_some_products">some_products</string>
     <string name="someCheck">Some checkboxes were selected</string>
-    <string name="title_activity_confirm_reservation">ConfirmReservationActivity</string>
-    <string name="hello_world">Hello world!</string>
+
 
 </resources>

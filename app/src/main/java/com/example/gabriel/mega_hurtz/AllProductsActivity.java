@@ -172,11 +172,12 @@ public class AllProductsActivity extends ListActivity{
                         /**
                          * Updating parsed JSON data into ListView
                          * */
-                        ListAdapter adapter = new SimpleAdapter(
+//                        ListAdapter adapter = new SimpleAdapter(
+                        MySimpleAdapter adapter = new MySimpleAdapter(
                                 AllProductsActivity.this, carsList,
-                                R.layout.activity_list_item, new String[] { TAG_VEHICLE_ID,
-                                TAG_NAME, TAG_PRICE},
+                                new String[] { TAG_VEHICLE_ID,TAG_NAME, TAG_PRICE},
                                 new int[] { R.id.pid, R.id.name, R.id.price });
+
                         // updating listview
                         setListAdapter(adapter);
                     }
