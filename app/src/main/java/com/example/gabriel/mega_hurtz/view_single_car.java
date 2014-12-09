@@ -146,8 +146,8 @@ public class view_single_car extends Activity implements OnClickListener {
                 progressupdate.dismiss();
                 progressupdate = null;
             }
-            runOnUiThread(new Runnable() {
-                public void run() {
+//            runOnUiThread(new Runnable() {
+//                public void run() {
                     /**
                      * Updating parsed JSON data into ListView
                      * */
