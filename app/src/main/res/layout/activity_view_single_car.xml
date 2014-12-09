@@ -112,15 +112,23 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:weightSum="2">
+                android:weightSum="3">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/costperday"
                     android:id="@+id/costperday"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:layout_gravity="left" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Text"
+                    android:id="@+id/numberOfDays"
+                    android:layout_weight="1"
+                    android:gravity="right" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -129,6 +137,7 @@
                     android:id="@+id/costperdayvalue"
                     android:layout_weight="1"
                     android:gravity="right" />
+
             </LinearLayout>
 
             <LinearLayout

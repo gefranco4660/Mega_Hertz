@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,15 +19,18 @@ import java.util.jar.Attributes;
 /**
  * Created by Gabriel.
  */
-public class LoadSingleCar extends AsyncTask<String, String, String> {
+public class LoadSingleCar2 extends AsyncTask<String, String, String> {
     ProgressDialog progressupdate;//Creating JSON Parser object
     JSONParser jsonParser = new JSONParser();
 
+    boolean working = true;
+
     HashMap<String, String> carData;
+    String pid;
     Context c;
 
     //URL to get all cars list
-    private static String URL_SINGLE_CAR = "http://westbayluxury.com/returnSingleCars.php";
+    private static String URL_SINGLE_CAR = "http://westbayluxury.com/returnSingleCar.php";
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -44,33 +48,37 @@ public class LoadSingleCar extends AsyncTask<String, String, String> {
     //car JSONArray
     JSONArray cars = null;
 
-    public void getThisCarInfo( HashMap<String, String> carData ,String pid){
+    public void getThisCarInfo( HashMap<String, String> carData ,String pid , Context c){
         this.c = c;
         this.carData = carData;
+        this.pid = pid;
         this.onPreExecute();
         this.execute();
+        working=false;
         this.onPostExecute(URL_SINGLE_CAR);
+
     }
 
-@Override
-    protected void onPreExecute(){
-        super.onPreExecute();
-        progressupdate = new ProgressDialog(c);
-        progressupdate.setMessage("Loading Products. Please Wait...");
-        progressupdate.setIndeterminate(false);
-        progressupdate.setCancelable(true);
-        progressupdate.show();
-    }
+//@Override
+//    protected void onPreExecute(){
+//        super.onPreExecute();
+//        progressupdate = new ProgressDialog(c);
+//        progressupdate.setMessage("Loading Products. Please Wait...");
+//        progressupdate.setIndeterminate(false);
+//        progressupdate.setCancelable(true);
+//        progressupdate.show();
+//    }
 
     protected String doInBackground(String... args) {
         //Building parameters
         List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("vehicle_id",pid));
 
         //getting JSON string from URL
         JSONObject json = jsonParser.makeHttpRequest(URL_SINGLE_CAR, "GET", params);
 
         //check your log cat for JSON response
-        Log.d("All Products: ", json.toString());
+        Log.d("Single car Products: ", json.toString());
 
         try {
             //Checking for success tag
@@ -79,7 +87,7 @@ public class LoadSingleCar extends AsyncTask<String, String, String> {
             if (success == 1) {
                 //product found
                 //depending on the php code this might nor be neccessary.
-                cars = json.getJSONArray(TAG_CARS);
+                cars = json.getJSONArray(TAG_VEHICLE_ID);
 
                 //if there is only one product returned by the php then you can make a direct json object from the php
                 JSONObject c = cars.getJSONObject(0);
@@ -103,16 +111,25 @@ public class LoadSingleCar extends AsyncTask<String, String, String> {
                 carData.put(TAG_YEAR, year);
                 carData.put(TAG_MPG, mpg);
 
+                Log.d("cardata :", carData.get("mpg"));
+
+                working = false;
+
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+            working = false;
             return null;
 
     }
+    public boolean isWorking(){
+        return working;
+    }
 
     protected void onPostExecute(String file_url){
-        if (progressupdate != null) {
+        if (!working) {
             progressupdate.dismiss();
             progressupdate = null;
         }

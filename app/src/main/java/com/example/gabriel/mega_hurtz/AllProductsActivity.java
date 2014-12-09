@@ -79,6 +79,7 @@ public class AllProductsActivity extends ListActivity{
                 // sending pid to next activity
                 in.putExtra(TAG_VEHICLE_ID, pid);
 
+
                 // starting new activity and expecting some response back
                 startActivityForResult(in, 100);
             }
@@ -133,6 +134,7 @@ public class AllProductsActivity extends ListActivity{
                         //looping through all products
                         for (int i = 0; i < cars.length(); i++){
                             JSONObject c = cars.getJSONObject(i);
+
 
                             //Storing each json item in variable
                             String id = c.getString(TAG_VEHICLE_ID);
