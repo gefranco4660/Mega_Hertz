@@ -37,11 +37,12 @@ public class view_single_car extends Activity implements OnClickListener {
     //Creating JSON Parser object
     JSONParser jsonParser = new JSONParser();
 
-    HashMap<String, String> carData;
+    HashMap<String, String> carData = new HashMap<String, String>();
 
-    int insureValue=0;
-    int totcost=0;
-    int daysRequested=0;
+    double insureValuecal;
+
+    double totcostcal;
+    int daysRequestedcal=3;
     String pid;
     Context c= this;
 
@@ -82,7 +83,7 @@ public class view_single_car extends Activity implements OnClickListener {
         protected void onPreExecute() {
             super.onPreExecute();
             progressupdate = new ProgressDialog(c);
-            progressupdate.setMessage("Loading Products. Please Wait...");
+            progressupdate.setMessage("Grabbing your car's detail. Please Wait...");
             progressupdate.setIndeterminate(false);
             progressupdate.setCancelable(true);
             progressupdate.show();
@@ -146,71 +147,76 @@ public class view_single_car extends Activity implements OnClickListener {
                 progressupdate.dismiss();
                 progressupdate = null;
             }
-//            runOnUiThread(new Runnable() {
-//                public void run() {
+            runOnUiThread(new Runnable() {
+                public void run() {
                     /**
                      * Updating parsed JSON data into ListView
                      * */
-//                    TextView carname = (TextView) findViewById(R.id.name);
-//                    TextView priceperday = (TextView) findViewById(R.id.costperday);
-//                    TextView summary = (TextView) findViewById(R.id.summary);
-//                    TextView totalcost = (TextView) findViewById(R.id.cost);
-//                    TextView year = (TextView) findViewById(R.id.year);
-//                    TextView make = (TextView) findViewById(R.id.make);
-//                    TextView mpg = (TextView) findViewById(R.id.mpg);
-//                    TextView insuranceCost = (TextView) findViewById(R.id.insuranceCost);
-//                    TextView numberofDays = (TextView) findViewById(R.id.numberOfDays);
-//                    ImageView carView = (ImageView) findViewById(R.id.carpic);
-//
-//                    carname.setText(carData.get("name"));
-//                    priceperday.setText(carData.get("price"));
-//                    summary.setText(carData.get("summary"));
-//                    totalcost.setText(totcost);
-//                    year.setText(carData.get("year"));
-//                    make.setText(carData.get("make"));
-//                    mpg.setText(carData.get("mpg"));
-//                    insuranceCost.setText(insureValue);
-//                    numberofDays.setText(daysRequested);
-//
-//                    String s = carData.get("vehicle_id");
-//
-//                    if (s.equals("1")) {
-//                        carView.setImageResource(R.drawable.id1);
-//                    } else if (s.equals("2")) {
-//                        carView.setImageResource(R.drawable.id2);
-//                    } else if (s.equals("3")) {
-//                        carView.setImageResource(R.drawable.id3);
-//                    } else if (s.equals("4")) {
-//                        carView.setImageResource(R.drawable.id4);
-//                    } else if (s.equals("5")) {
-//                        carView.setImageResource(R.drawable.id5);
-//                    } else if (s.equals("6")) {
-//                        carView.setImageResource(R.drawable.id6);
-//                    } else if (s.equals("7")) {
-//                        carView.setImageResource(R.drawable.id7);
-//                    } else if (s.equals("8")) {
-//                        carView.setImageResource(R.drawable.id8);
-//                    } else if (s.equals("9")) {
-//                        carView.setImageResource(R.drawable.id9);
-//                    } else if (s.equals("10")) {
-//                        carView.setImageResource(R.drawable.id10);
-//                    } else if (s.equals("11")) {
-//                        carView.setImageResource(R.drawable.id11);
-//                    } else if (s.equals("12")) {
-//                        carView.setImageResource(R.drawable.id12);
-//                    } else if (s.equals("13")) {
-//                        carView.setImageResource(R.drawable.id13);
-//                    } else if (s.equals("14")) {
-//                        carView.setImageResource(R.drawable.id14);
-//                    } else if (s.equals("15")) {
-//                        carView.setImageResource(R.drawable.id15);
-//                    } else if (s.equals("16")) {
-//                        carView.setImageResource(R.drawable.id16);
-//                    } else {
-//                        carView.setImageResource(R.drawable.ic_launcher);
-//                    }
-//                }
-//            });
+                    TextView carname = (TextView) findViewById(R.id.name);
+                    TextView priceperday = (TextView) findViewById(R.id.costperdayvalue);
+                    TextView summary = (TextView) findViewById(R.id.summary);
+                    TextView totalcost = (TextView) findViewById(R.id.totalCostValue);
+                    TextView year = (TextView) findViewById(R.id.year);
+                    TextView make = (TextView) findViewById(R.id.make);
+                    TextView mpg = (TextView) findViewById(R.id.mpg);
+                    TextView insuranceCost = (TextView) findViewById(R.id.insuranceCost);
+                    TextView numberofDays = (TextView) findViewById(R.id.numberOfDays);
+                    ImageView carView = (ImageView) findViewById(R.id.carpic);
+
+                    totcostcal = daysRequestedcal* Integer.parseInt(carData.get(TAG_PRICE));
+                    insureValuecal = totcostcal*0.17;
+                    String totalcostv = Double.toString(totcostcal+insureValuecal);
+                    String insureValue = Double.toString(insureValuecal);
+                    String daysReq = Integer.toString(daysRequestedcal);
+
+                    carname.setText("Name:  "+carData.get(TAG_NAME));
+                    priceperday.setText(carData.get(TAG_PRICE)+"$");
+                    summary.setText(carData.get(TAG_SUMMARY));
+                    totalcost.setText(totalcostv);
+                    year.setText("Year:  "+carData.get(TAG_YEAR));
+                    make.setText("Make:  "+carData.get(TAG_MAKE));
+                    mpg.setText("MPG:  "+carData.get(TAG_MPG));
+                    insuranceCost.setText(insureValue);
+                    numberofDays.setText(daysReq+" * ");
+
+                    String s = carData.get(TAG_VEHICLE_ID);
+                    if (s.equals("1")) {
+                        carView.setImageResource(R.drawable.id1);
+                    } else if (s.equals("2")) {
+                        carView.setImageResource(R.drawable.id2);
+                    } else if (s.equals("3")) {
+                        carView.setImageResource(R.drawable.id3);
+                    } else if (s.equals("4")) {
+                        carView.setImageResource(R.drawable.id4);
+                    } else if (s.equals("5")) {
+                        carView.setImageResource(R.drawable.id5);
+                    } else if (s.equals("6")) {
+                        carView.setImageResource(R.drawable.id6);
+                    } else if (s.equals("7")) {
+                        carView.setImageResource(R.drawable.id7);
+                    } else if (s.equals("8")) {
+                        carView.setImageResource(R.drawable.id8);
+                    } else if (s.equals("9")) {
+                        carView.setImageResource(R.drawable.id9);
+                    } else if (s.equals("10")) {
+                        carView.setImageResource(R.drawable.id10);
+                    } else if (s.equals("11")) {
+                        carView.setImageResource(R.drawable.id11);
+                    } else if (s.equals("12")) {
+                        carView.setImageResource(R.drawable.id12);
+                    } else if (s.equals("13")) {
+                        carView.setImageResource(R.drawable.id13);
+                    } else if (s.equals("14")) {
+                        carView.setImageResource(R.drawable.id14);
+                    } else if (s.equals("15")) {
+                        carView.setImageResource(R.drawable.id15);
+                    } else if (s.equals("16")) {
+                        carView.setImageResource(R.drawable.id16);
+                    } else {
+                        carView.setImageResource(R.drawable.ic_launcher);
+                    }
+                }
+            });
         }
     }
 
