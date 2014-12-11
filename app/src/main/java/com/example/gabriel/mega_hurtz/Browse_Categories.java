@@ -1,6 +1,9 @@
 package com.example.gabriel.mega_hurtz;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +12,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
+import android.widget.EditText;
+
+import java.util.Calendar;
 
 
 public class Browse_Categories extends Activity implements OnClickListener {
@@ -118,6 +125,56 @@ public class Browse_Categories extends Activity implements OnClickListener {
             sum = sum + choice[i];
         }
 
+    }
+
+    public static class DatePickerFragmentTo extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            EditText to = (EditText) getActivity().findViewById(R.id.toDatepick);
+            String date = (month+1)+"/"+day+"/"+year;
+            to.setText(date);
+        }
+    }
+    public void showDatePickerDialogTo(View v) {
+        DialogFragment newFragment = new DatePickerFragmentTo();
+        newFragment.show(getFragmentManager() ,"dateFromPicker");
+    }
+
+    public static class DatePickerFragmentFrom extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            EditText from = (EditText) getActivity().findViewById(R.id.fromDatepick);
+            String date = (month+1)+"/"+day+"/"+year;
+            from.setText(date);
+        }
+
+    }
+    public void showDatePickerDialogFrom(View v) {
+        DialogFragment newFragment = new DatePickerFragmentFrom();
+        newFragment.show(getFragmentManager() ,"dateFromPicker");
     }
 
     @Override

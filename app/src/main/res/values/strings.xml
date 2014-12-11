@@ -55,7 +55,8 @@
     <string name="premium">Premium</string>
     <string name="luxury">Luxury</string>
     <string name="convertible">Convertible</string>
-
+    <string name="promptDateTo">Select the date to drop off vehicle:</string>
+    <string name="promptDateFrom">Select the date to pick up vehicle:</string>
     <string name="changeDate">Change Date</string>
 
     //Account Information page

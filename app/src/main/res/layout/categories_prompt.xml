@@ -21,27 +21,65 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <DatePicker
-                android:id="@+id/dateFrom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:calendarViewShown="false"
-                android:layout_gravity="center_horizontal" />
-
-            <DatePicker
-                android:id="@+id/datePicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:calendarViewShown="false"
-                android:foregroundGravity="center_horizontal"
-                android:layout_gravity="center_horizontal" />
-
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="0dp">
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_span="2">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/dateFrom"
+                            android:text="@string/promptDateFrom"
+                            android:gravity="center_horizontal"
+                            android:layout_gravity="center_horizontal" />
+
+                        <EditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="date"
+                            android:ems="10"
+                            android:id="@+id/fromDatepick"
+                            android:onClick="showDatePickerDialogFrom"
+                            android:layout_gravity="center_horizontal" />
+
+                        <Space
+                            android:layout_width="fill_parent"
+                            android:layout_height="20sp" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/promptDateTo"
+                            android:id="@+id/dateTo"
+                            android:layout_gravity="center_horizontal" />
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="date"
+                            android:ems="10"
+                            android:id="@+id/toDatepick"
+                            android:onClick="showDatePickerDialogTo"
+                            android:layout_gravity="center_horizontal" />
+
+                        <Space
+                            android:layout_width="fill_parent"
+                            android:layout_height="30sp" />
+                    </LinearLayout>
+                </TableRow>
 
                 <TableRow
                     android:layout_width="fill_parent"
